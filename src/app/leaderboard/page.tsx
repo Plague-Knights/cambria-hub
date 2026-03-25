@@ -20,15 +20,15 @@ interface Me {
 }
 
 const RANK_STYLES: Record<number, string> = {
-  1: "text-yellow-400",
-  2: "text-gray-300",
-  3: "text-amber-600",
+  1: "text-gold",
+  2: "text-gold-light",
+  3: "text-gold-dark",
 };
 
 const RANK_BG: Record<number, string> = {
-  1: "bg-yellow-400/5 border-yellow-400/20",
-  2: "bg-gray-300/5 border-gray-300/20",
-  3: "bg-amber-600/5 border-amber-600/20",
+  1: "bg-gold/5 border-gold/20",
+  2: "bg-gold/3 border-gold-light/15",
+  3: "bg-gold/3 border-gold-dark/15",
 };
 
 export default function LeaderboardPage() {
@@ -58,7 +58,7 @@ export default function LeaderboardPage() {
             Leaderboard
           </h1>
           <p className="text-muted text-sm">
-            Top adventurers ranked by total XP earned.
+            Top Knights ranked by total XP earned in the devastated lands.
           </p>
         </div>
 
@@ -76,14 +76,14 @@ export default function LeaderboardPage() {
                 <div
                   key={entry.id}
                   className={`flex flex-col items-center p-4 sm:p-6 rounded-xl border transition-all duration-300
-                    ${actualRank === 1 ? "bg-yellow-400/5 border-yellow-400/20 sm:-mt-4" : ""}
-                    ${actualRank === 2 ? "bg-gray-300/5 border-gray-300/15" : ""}
-                    ${actualRank === 3 ? "bg-amber-600/5 border-amber-600/15" : ""}
+                    ${actualRank === 1 ? "glass-card border-gold/30 sm:-mt-4 shadow-[0_0_25px_rgba(0,255,102,0.1)]" : ""}
+                    ${actualRank === 2 ? "glass-card border-gold/15" : ""}
+                    ${actualRank === 3 ? "glass-card border-gold/10" : ""}
                     ${isMe ? "ring-1 ring-gold/40" : ""}
                   `}
                 >
                   {/* Rank number */}
-                  <span className={`font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold mb-3 ${RANK_STYLES[actualRank]}`}>
+                  <span className={`font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold mb-3 ${RANK_STYLES[actualRank]} ${actualRank === 1 ? "drop-shadow-[0_0_10px_rgba(0,255,102,0.4)]" : ""}`}>
                     {actualRank}
                   </span>
 
@@ -93,7 +93,7 @@ export default function LeaderboardPage() {
                       src={avatarUrl}
                       alt=""
                       className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-3 ring-2 ${
-                        actualRank === 1 ? "ring-yellow-400/50" : actualRank === 2 ? "ring-gray-300/50" : "ring-amber-600/50"
+                        actualRank === 1 ? "ring-gold/50 shadow-[0_0_15px_rgba(0,255,102,0.2)]" : actualRank === 2 ? "ring-gold-light/40" : "ring-gold-dark/40"
                       }`}
                     />
                   ) : (
@@ -125,15 +125,15 @@ export default function LeaderboardPage() {
             ))}
           </div>
         ) : entries.length === 0 ? (
-          <div className="bg-surface border border-border rounded-xl p-12 text-center">
-            <p className="text-muted">No players on the leaderboard yet.</p>
+          <div className="glass-card rounded-xl p-12 text-center">
+            <p className="text-muted">No Knights on the leaderboard yet.</p>
           </div>
         ) : (
-          <div className="bg-surface border border-border rounded-xl overflow-hidden">
+          <div className="glass-card rounded-xl overflow-hidden">
             {/* Table header */}
             <div className="grid grid-cols-[3rem_1fr_5rem_5rem_5rem] sm:grid-cols-[4rem_1fr_6rem_6rem_7rem] gap-2 px-4 py-3 border-b border-border text-xs text-muted uppercase tracking-wider">
               <span>Rank</span>
-              <span>Player</span>
+              <span>Knight</span>
               <span className="text-right">Level</span>
               <span className="text-right">XP</span>
               <span className="text-right hidden sm:block">Missions</span>

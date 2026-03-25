@@ -17,27 +17,27 @@ const CATEGORY_META: Record<string, { label: string; icon: string; color: string
   "getting-started": {
     label: "Getting Started",
     icon: "M13 10V3L4 14h7v7l9-11h-7z",
-    color: "text-green-400 bg-green-500/10",
+    color: "text-gold bg-gold/10",
   },
   combat: {
     label: "Combat",
     icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
-    color: "text-red-400 bg-red-500/10",
+    color: "text-gold bg-gold/10",
   },
   gathering: {
     label: "Gathering",
     icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
-    color: "text-emerald-400 bg-emerald-500/10",
+    color: "text-gold-light bg-gold/10",
   },
   trading: {
     label: "Trading",
     icon: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z",
-    color: "text-blue-400 bg-blue-500/10",
+    color: "text-gold bg-gold/10",
   },
   crafting: {
     label: "Crafting",
     icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
-    color: "text-purple-400 bg-purple-500/10",
+    color: "text-gold-light bg-gold/10",
   },
   general: {
     label: "General",
@@ -75,7 +75,7 @@ export default function GuidesPage() {
             Guides
           </h1>
           <p className="text-muted text-sm">
-            Everything you need to know about Cambria.
+            Everything you need to survive the devastated lands of Cambria.
           </p>
         </div>
 
@@ -90,8 +90,8 @@ export default function GuidesPage() {
                 className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-150 border
                   ${
                     activeCategory === cat
-                      ? "bg-gold/10 text-gold border-gold/30"
-                      : "bg-surface text-muted border-border hover:text-foreground"
+                      ? "bg-gold/10 text-gold border-gold/30 shadow-[0_0_10px_rgba(0,255,102,0.1)]"
+                      : "bg-surface text-muted border-border hover:text-foreground hover:border-gold/15"
                   }`}
               >
                 {meta.label}
@@ -108,7 +108,7 @@ export default function GuidesPage() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="bg-surface border border-border rounded-xl p-12 text-center">
+          <div className="glass-card rounded-xl p-12 text-center">
             <p className="text-muted">No guides available yet. Check back soon!</p>
           </div>
         ) : (
@@ -123,7 +123,7 @@ export default function GuidesPage() {
               return (
                 <div
                   key={guide.id}
-                  className="bg-surface border border-border rounded-xl p-5 hover:border-gold/25 transition-all duration-200 group flex flex-col"
+                  className="glass-card rounded-xl p-5 transition-all duration-200 group flex flex-col"
                 >
                   {/* Category icon */}
                   <div className="flex items-center gap-3 mb-4">

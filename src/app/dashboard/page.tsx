@@ -112,24 +112,24 @@ export default function DashboardPage() {
         {/* Welcome */}
         <div className="flex items-center gap-4">
           {avatarUrl ? (
-            <img src={avatarUrl} alt="" className="w-14 h-14 rounded-full ring-2 ring-gold/30" />
+            <img src={avatarUrl} alt="" className="w-14 h-14 rounded-full ring-2 ring-gold/30 shadow-[0_0_15px_rgba(0,255,102,0.15)]" />
           ) : (
-            <div className="w-14 h-14 rounded-full bg-surface-lighter flex items-center justify-center text-xl text-gold font-semibold">
+            <div className="w-14 h-14 rounded-full bg-surface-lighter flex items-center justify-center text-xl text-gold font-semibold shadow-[0_0_15px_rgba(0,255,102,0.1)]">
               {profile.username[0].toUpperCase()}
             </div>
           )}
           <div>
             <h1 className="font-[family-name:var(--font-cinzel)] text-2xl font-bold text-foreground">
-              Welcome back, <span className="text-gold">{profile.username}</span>
+              Welcome back, <span className="text-gold drop-shadow-[0_0_6px_rgba(0,255,102,0.3)]">{profile.username}</span>
             </h1>
             <p className="text-muted text-sm mt-0.5">
-              Level {profile.level} Adventurer
+              Level {profile.level} Knight
             </p>
           </div>
         </div>
 
         {/* XP Bar */}
-        <div className="bg-surface border border-border rounded-xl p-5">
+        <div className="glass-card rounded-xl p-5">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm text-muted">Level {profile.level}</span>
             <span className="text-sm text-gold font-medium">
@@ -139,7 +139,7 @@ export default function DashboardPage() {
           </div>
           <div className="h-3 bg-surface-lighter rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full transition-all duration-700 ease-out"
+              className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full transition-all duration-700 ease-out shadow-[0_0_10px_rgba(0,255,102,0.4)]"
               style={{ width: `${xpProgress.percent}%` }}
             />
           </div>
@@ -155,7 +155,7 @@ export default function DashboardPage() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-surface border border-border rounded-xl p-5 hover:border-gold/20 transition-colors"
+              className="glass-card rounded-xl p-5 transition-all duration-200"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center">
@@ -165,7 +165,7 @@ export default function DashboardPage() {
                 </div>
                 <span className="text-xs text-muted uppercase tracking-wider">{stat.label}</span>
               </div>
-              <p className="font-[family-name:var(--font-cinzel)] text-2xl font-bold text-foreground">
+              <p className="font-[family-name:var(--font-cinzel)] text-2xl font-bold text-gold drop-shadow-[0_0_6px_rgba(0,255,102,0.2)]">
                 {stat.value}
               </p>
             </div>
@@ -187,7 +187,7 @@ export default function DashboardPage() {
               {activeMissions.map((mission) => (
                 <div
                   key={mission.id}
-                  className="bg-surface border border-border rounded-xl p-5 hover:border-gold/20 transition-all duration-200 group"
+                  className="glass-card rounded-xl p-5 transition-all duration-200 group"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider ${typeColor(mission.type)}`}>
@@ -205,8 +205,8 @@ export default function DashboardPage() {
               ))}
             </div>
           ) : (
-            <div className="bg-surface border border-border rounded-xl p-8 text-center">
-              <p className="text-muted text-sm">No active missions right now. Check back soon!</p>
+            <div className="glass-card rounded-xl p-8 text-center">
+              <p className="text-muted text-sm">No active missions right now. Check back soon, Knight!</p>
             </div>
           )}
         </div>
@@ -217,12 +217,12 @@ export default function DashboardPage() {
             <h2 className="font-[family-name:var(--font-cinzel)] text-lg font-semibold text-foreground mb-4">
               Recent Completions
             </h2>
-            <div className="bg-surface border border-border rounded-xl divide-y divide-border">
+            <div className="glass-card rounded-xl divide-y divide-border">
               {profile.recentCompletions.map((comp) => (
                 <div key={comp.id} className="flex items-center justify-between px-5 py-3.5">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
@@ -249,11 +249,11 @@ export default function DashboardPage() {
 
 function typeColor(type: string) {
   switch (type) {
-    case "CORE": return "bg-blue-500/15 text-blue-400";
-    case "DAILY": return "bg-green-500/15 text-green-400";
-    case "WEEKLY": return "bg-purple-500/15 text-purple-400";
-    case "SEASONAL": return "bg-orange-500/15 text-orange-400";
-    case "SPECIAL": return "bg-gold/15 text-gold";
+    case "CORE": return "bg-gold/15 text-gold";
+    case "DAILY": return "bg-gold/10 text-gold-light";
+    case "WEEKLY": return "bg-gold/15 text-gold";
+    case "SEASONAL": return "bg-gold/20 text-gold";
+    case "SPECIAL": return "bg-gold/25 text-gold";
     default: return "bg-surface-lighter text-muted";
   }
 }

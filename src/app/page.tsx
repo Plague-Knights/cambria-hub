@@ -19,36 +19,63 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero */}
-      <section className="flex-1 flex flex-col items-center justify-center px-6 py-24 text-center relative overflow-hidden">
+      <section className="flex-1 flex flex-col items-center justify-center px-6 py-24 text-center relative overflow-hidden shield-pattern">
         {/* Background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px]" />
+          <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] bg-gold/3 rounded-full blur-[100px]" />
         </div>
 
         <div className="relative z-10 max-w-2xl mx-auto animate-fade-in">
+          {/* Shield emblem */}
+          <div className="mb-6 flex justify-center">
+            <div className="relative">
+              <svg className="w-16 h-16 text-gold drop-shadow-[0_0_12px_rgba(0,255,102,0.4)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.2}>
+                <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
+                <path d="M9 12l2 2 4-4" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          </div>
+
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border-gold bg-gold/5 text-gold text-xs font-medium tracking-wider uppercase mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-            Now Live
+            Now Recruiting
           </div>
 
-          <h1 className="font-[family-name:var(--font-cinzel)] text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-            <span className="animate-shimmer">Cambria</span>
-            <br />
-            <span className="text-foreground">Mission Hub</span>
+          <h1 className="font-[family-name:var(--font-cinzel)] text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-2">
+            <span className="animate-shimmer">Plague Knights</span>
           </h1>
+          <h2 className="font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl md:text-3xl font-semibold text-foreground/80 mb-6">
+            Cambria Mission Hub
+          </h2>
 
-          <p className="text-muted text-lg sm:text-xl leading-relaxed max-w-lg mx-auto mb-10">
-            Complete missions, earn XP, and rise through the ranks.
-            Your journey in Cambria starts here.
+          <p className="text-muted text-lg sm:text-xl leading-relaxed max-w-lg mx-auto mb-6">
+            Conquer the devastated lands. Complete missions. Earn your place.
           </p>
+
+          {/* Stats row */}
+          <div className="flex items-center justify-center gap-6 sm:gap-10 mb-10">
+            {[
+              { value: "#1", label: "Guild" },
+              { value: "Top 5", label: "Arena" },
+              { value: "50+", label: "Knights" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold text-gold drop-shadow-[0_0_8px_rgba(0,255,102,0.3)]">
+                  {stat.value}
+                </p>
+                <p className="text-muted text-xs uppercase tracking-wider mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
 
           {!checking && (
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               {loggedIn ? (
                 <Link
                   href="/dashboard"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-gold hover:bg-gold-light text-background font-semibold text-sm tracking-wide transition-all duration-200 hover:shadow-[0_0_24px_rgba(212,168,50,0.3)]"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-gold hover:bg-gold-light text-background font-semibold text-sm tracking-wide transition-all duration-200 hover:shadow-[0_0_30px_rgba(0,255,102,0.3)]"
                 >
                   Enter Dashboard
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,7 +95,7 @@ export default function Home() {
               )}
               <Link
                 href="/missions"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border border-border hover:border-gold/40 text-foreground text-sm font-medium transition-all duration-200"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border border-border hover:border-gold/40 text-foreground text-sm font-medium transition-all duration-200 hover:shadow-[0_0_15px_rgba(0,255,102,0.1)]"
               >
                 Browse Missions
               </Link>
@@ -77,41 +104,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features */}
+      {/* Game Activities */}
       <section className="px-6 pb-24">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {[
-            {
-              title: "Complete Missions",
-              desc: "Daily, weekly, and seasonal missions tailored to your Cambria adventure.",
-              icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
-            },
-            {
-              title: "Earn XP & Level Up",
-              desc: "Gain experience for every mission completed. Rise through the ranks.",
-              icon: "M13 10V3L4 14h7v7l9-11h-7z",
-            },
-            {
-              title: "Climb the Leaderboard",
-              desc: "Compete with other players and prove your worth on the global leaderboard.",
-              icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-            },
-          ].map((feat) => (
-            <div
-              key={feat.title}
-              className="group p-6 rounded-xl bg-surface border border-border hover:border-gold/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,168,50,0.06)]"
-            >
-              <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/15 transition-colors">
-                <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={feat.icon} />
-                </svg>
+        <div className="max-w-4xl mx-auto">
+          <h3 className="font-[family-name:var(--font-cinzel)] text-lg text-gold font-semibold text-center mb-8 tracking-wider uppercase">
+            Dominate Every Arena
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Explore & Gather",
+                desc: "Venture into the devastated lands. Fish, Mine, Woodcut, and gather resources to build your fortune.",
+                icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
+              },
+              {
+                title: "Complete Missions",
+                desc: "Take on daily, weekly, and seasonal challenges. Earn Silver, Royal Favor, and Artifacts along the way.",
+                icon: "M13 10V3L4 14h7v7l9-11h-7z",
+              },
+              {
+                title: "Climb the Ranks",
+                desc: "Compete on the leaderboard against fellow Knights. Level up, earn XP, and prove your worth in the guild.",
+                icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+              },
+            ].map((feat) => (
+              <div
+                key={feat.title}
+                className="glass-card group p-6 rounded-xl transition-all duration-300"
+              >
+                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors group-hover:shadow-[0_0_12px_rgba(0,255,102,0.15)]">
+                  <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={feat.icon} />
+                  </svg>
+                </div>
+                <h3 className="font-[family-name:var(--font-cinzel)] text-foreground font-semibold mb-2">
+                  {feat.title}
+                </h3>
+                <p className="text-muted text-sm leading-relaxed">{feat.desc}</p>
               </div>
-              <h3 className="font-[family-name:var(--font-cinzel)] text-foreground font-semibold mb-2">
-                {feat.title}
-              </h3>
-              <p className="text-muted text-sm leading-relaxed">{feat.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
     </div>

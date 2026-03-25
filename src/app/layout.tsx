@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Inter } from "next/font/google";
+import { Cinzel, Rajdhani } from "next/font/google";
 import "./globals.css";
 import { Nav } from "./nav";
 
@@ -9,15 +9,16 @@ const cinzel = Cinzel({
   weight: ["400", "500", "600", "700"],
 });
 
-const inter = Inter({
+const rajdhani = Rajdhani({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-rajdhani",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Cambria Mission Hub",
+  title: "Plague Knights | Cambria Mission Hub",
   description:
-    "Complete missions, earn XP, and climb the ranks in the world of Cambria.",
+    "Conquer the devastated lands. Complete missions. Earn your place among the Plague Knights.",
 };
 
 export default function RootLayout({
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cinzel.variable} ${rajdhani.variable}`}>
       <body className="min-h-screen flex">
         <Nav />
         <main className="flex-1 md:ml-60">{children}</main>

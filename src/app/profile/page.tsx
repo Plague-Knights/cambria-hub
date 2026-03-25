@@ -39,10 +39,10 @@ function xpToNextLevel(xp: number, level: number) {
 
 function typeColor(type: string) {
   switch (type) {
-    case "CORE": return "text-blue-400";
-    case "DAILY": return "text-green-400";
-    case "WEEKLY": return "text-purple-400";
-    case "SEASONAL": return "text-orange-400";
+    case "CORE": return "text-gold";
+    case "DAILY": return "text-gold-light";
+    case "WEEKLY": return "text-gold";
+    case "SEASONAL": return "text-gold";
     case "SPECIAL": return "text-gold";
     default: return "text-muted";
   }
@@ -120,7 +120,7 @@ export default function ProfilePage() {
     <div className="min-h-screen p-4 sm:p-6 lg:p-8 pt-16 md:pt-8">
       <div className="max-w-3xl mx-auto animate-fade-in space-y-8">
         {/* Profile Header */}
-        <div className="bg-surface border border-border rounded-xl p-6 sm:p-8 relative overflow-hidden">
+        <div className="glass-card rounded-xl p-6 sm:p-8 relative overflow-hidden">
           {/* Background glow */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-[80px] pointer-events-none" />
 
@@ -130,10 +130,10 @@ export default function ProfilePage() {
               <img
                 src={avatarUrl}
                 alt=""
-                className="w-24 h-24 rounded-full ring-2 ring-gold/30 shadow-[0_0_30px_rgba(212,168,50,0.1)]"
+                className="w-24 h-24 rounded-full ring-2 ring-gold/30 shadow-[0_0_30px_rgba(0,255,102,0.15)]"
               />
             ) : (
-              <div className="w-24 h-24 rounded-full bg-surface-lighter flex items-center justify-center text-3xl font-bold text-gold ring-2 ring-gold/30">
+              <div className="w-24 h-24 rounded-full bg-surface-lighter flex items-center justify-center text-3xl font-bold text-gold ring-2 ring-gold/30 shadow-[0_0_30px_rgba(0,255,102,0.15)]">
                 {profile.username[0].toUpperCase()}
               </div>
             )}
@@ -143,7 +143,7 @@ export default function ProfilePage() {
                 {profile.username}
               </h1>
               <p className="text-gold text-sm font-medium mt-1">
-                Level {profile.level} Adventurer
+                Level {profile.level} Knight
               </p>
 
               {/* XP Progress */}
@@ -154,7 +154,7 @@ export default function ProfilePage() {
                 </div>
                 <div className="h-2.5 bg-surface-lighter rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full transition-all duration-700"
+                    className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full transition-all duration-700 shadow-[0_0_10px_rgba(0,255,102,0.4)]"
                     style={{ width: `${xpProgress.percent}%` }}
                   />
                 </div>
@@ -178,13 +178,13 @@ export default function ProfilePage() {
           {[
             { label: "Total XP", value: profile.xp.toLocaleString(), accent: "text-gold" },
             { label: "Level", value: profile.level.toString(), accent: "text-gold" },
-            { label: "Missions", value: profile.missionsCompleted.toString(), accent: "text-green-400" },
+            { label: "Missions", value: profile.missionsCompleted.toString(), accent: "text-gold-light" },
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-surface border border-border rounded-xl p-4 sm:p-5 text-center hover:border-gold/20 transition-colors"
+              className="glass-card rounded-xl p-4 sm:p-5 text-center transition-all duration-200"
             >
-              <p className={`font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold ${stat.accent}`}>
+              <p className={`font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold ${stat.accent} drop-shadow-[0_0_6px_rgba(0,255,102,0.2)]`}>
                 {stat.value}
               </p>
               <p className="text-muted text-xs mt-1 uppercase tracking-wider">{stat.label}</p>
@@ -198,16 +198,16 @@ export default function ProfilePage() {
             Mission History
           </h2>
           {profile.recentCompletions.length === 0 ? (
-            <div className="bg-surface border border-border rounded-xl p-8 text-center">
-              <p className="text-muted text-sm">No missions completed yet. Start your adventure!</p>
+            <div className="glass-card rounded-xl p-8 text-center">
+              <p className="text-muted text-sm">No missions completed yet. Begin your conquest, Knight!</p>
             </div>
           ) : (
-            <div className="bg-surface border border-border rounded-xl divide-y divide-border">
+            <div className="glass-card rounded-xl divide-y divide-border">
               {profile.recentCompletions.map((comp) => (
                 <div key={comp.id} className="flex items-center justify-between px-5 py-4 hover:bg-surface-light/30 transition-colors">
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-lg bg-green-500/10 flex items-center justify-center shrink-0">
-                      <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
+                      <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>

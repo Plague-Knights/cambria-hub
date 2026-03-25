@@ -23,11 +23,11 @@ const TABS = ["All", "CORE", "DAILY", "WEEKLY", "SEASONAL", "SPECIAL"] as const;
 
 function typeColor(type: string) {
   switch (type) {
-    case "CORE": return "bg-blue-500/15 text-blue-400 border-blue-500/20";
-    case "DAILY": return "bg-green-500/15 text-green-400 border-green-500/20";
-    case "WEEKLY": return "bg-purple-500/15 text-purple-400 border-purple-500/20";
-    case "SEASONAL": return "bg-orange-500/15 text-orange-400 border-orange-500/20";
-    case "SPECIAL": return "bg-gold/15 text-gold border-gold/20";
+    case "CORE": return "bg-gold/15 text-gold border-gold/20";
+    case "DAILY": return "bg-gold/10 text-gold-light border-gold/15";
+    case "WEEKLY": return "bg-gold/15 text-gold border-gold/20";
+    case "SEASONAL": return "bg-gold/20 text-gold border-gold/25";
+    case "SPECIAL": return "bg-gold/25 text-gold border-gold/30";
     default: return "bg-surface-lighter text-muted border-border";
   }
 }
@@ -70,7 +70,7 @@ export default function MissionsPage() {
             Missions
           </h1>
           <p className="text-muted text-sm">
-            Complete missions to earn XP and level up your account.
+            Complete missions to earn XP and rise through the ranks, Knight.
           </p>
         </div>
 
@@ -83,8 +83,8 @@ export default function MissionsPage() {
               className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-150 border
                 ${
                   activeTab === tab
-                    ? "bg-gold/10 text-gold border-gold/30"
-                    : "bg-surface text-muted border-border hover:text-foreground hover:border-border"
+                    ? "bg-gold/10 text-gold border-gold/30 shadow-[0_0_10px_rgba(0,255,102,0.1)]"
+                    : "bg-surface text-muted border-border hover:text-foreground hover:border-gold/15"
                 }`}
             >
               {tab === "All" ? "All" : tab.charAt(0) + tab.slice(1).toLowerCase()}
@@ -100,7 +100,7 @@ export default function MissionsPage() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="bg-surface border border-border rounded-xl p-12 text-center">
+          <div className="glass-card rounded-xl p-12 text-center">
             <p className="text-muted">No missions found for this category.</p>
           </div>
         ) : (
@@ -113,17 +113,17 @@ export default function MissionsPage() {
               return (
                 <div
                   key={mission.id}
-                  className={`relative bg-surface border rounded-xl p-5 transition-all duration-200 group
-                    ${isCompleted ? "border-green-500/30 bg-green-500/5" : ""}
-                    ${isLocked ? "border-border opacity-60" : ""}
-                    ${!isCompleted && !isLocked ? "border-border hover:border-gold/25 hover:shadow-[0_0_20px_rgba(212,168,50,0.05)]" : ""}
+                  className={`relative rounded-xl p-5 transition-all duration-200 group
+                    ${isCompleted ? "glass-card border-gold/30 bg-gold/5" : ""}
+                    ${isLocked ? "glass-card opacity-60" : ""}
+                    ${!isCompleted && !isLocked ? "glass-card" : ""}
                   `}
                 >
                   {/* Status indicator */}
                   {isCompleted && (
                     <div className="absolute top-3 right-3">
-                      <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center">
+                        <svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
@@ -151,7 +151,7 @@ export default function MissionsPage() {
 
                   {/* Title */}
                   <h3 className={`font-[family-name:var(--font-cinzel)] font-semibold text-sm mb-1.5 transition-colors
-                    ${isCompleted ? "text-green-300" : isLocked ? "text-muted" : "text-foreground group-hover:text-gold"}`}
+                    ${isCompleted ? "text-gold" : isLocked ? "text-muted" : "text-foreground group-hover:text-gold"}`}
                   >
                     {mission.icon && <span className="mr-1.5">{mission.icon}</span>}
                     {mission.title}
@@ -165,7 +165,7 @@ export default function MissionsPage() {
                   {/* Footer */}
                   <div className="flex items-center justify-between mt-auto">
                     <span className="text-gold text-sm font-semibold">+{mission.xpReward} XP</span>
-                    {isCompleted && <span className="text-green-400 text-xs font-medium">Completed</span>}
+                    {isCompleted && <span className="text-gold text-xs font-medium">Completed</span>}
                     {isLocked && <span className="text-muted text-xs">Requires prerequisite</span>}
                     {isInactive && !isCompleted && !isLocked && (
                       <span className="text-muted text-xs">Inactive</span>
@@ -190,7 +190,7 @@ export default function MissionsPage() {
                   {/* Season tag */}
                   {mission.season && (
                     <div className="mt-3 pt-3 border-t border-border">
-                      <p className="text-xs text-orange-400 flex items-center gap-1.5">
+                      <p className="text-xs text-gold flex items-center gap-1.5">
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                         </svg>

@@ -40,9 +40,14 @@ export function Nav() {
     <>
       {/* Mobile top bar */}
       <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-surface/95 backdrop-blur border-b border-border px-4 h-14 md:hidden">
-        <span className="font-[family-name:var(--font-cinzel)] text-gold font-semibold text-sm tracking-wide">
-          Cambria
-        </span>
+        <div className="flex items-center gap-2">
+          <svg className="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+            <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
+          </svg>
+          <span className="font-[family-name:var(--font-cinzel)] text-gold font-semibold text-sm tracking-wide">
+            Plague Knights
+          </span>
+        </div>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="text-foreground p-1"
@@ -66,10 +71,18 @@ export function Nav() {
         {/* Logo */}
         <div className="px-5 pt-6 pb-4 border-b border-border">
           <Link href="/" className="block" onClick={() => setMobileOpen(false)}>
-            <h1 className="font-[family-name:var(--font-cinzel)] text-gold text-xl font-bold tracking-wider">
-              Cambria
-            </h1>
-            <p className="text-muted text-xs mt-0.5 tracking-wide">Mission Hub</p>
+            <div className="flex items-center gap-2.5">
+              <svg className="w-7 h-7 text-gold drop-shadow-[0_0_8px_rgba(0,255,102,0.4)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+                <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
+                <path d="M9 12l2 2 4-4" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <div>
+                <h1 className="font-[family-name:var(--font-cinzel)] text-gold text-lg font-bold tracking-wider">
+                  Plague Knights
+                </h1>
+                <p className="text-muted text-[10px] mt-0 tracking-widest uppercase">Cambria Mission Hub</p>
+              </div>
+            </div>
           </Link>
         </div>
 
@@ -85,11 +98,11 @@ export function Nav() {
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150
                   ${
                     active
-                      ? "bg-gold/10 text-gold border border-border-gold"
+                      ? "bg-gold/10 text-gold border border-border-gold shadow-[0_0_10px_rgba(0,255,102,0.08)]"
                       : "text-muted hover:text-foreground hover:bg-surface-light border border-transparent"
                   }`}
               >
-                <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className={`w-5 h-5 shrink-0 ${active ? "drop-shadow-[0_0_4px_rgba(0,255,102,0.5)]" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={link.icon} />
                 </svg>
                 {link.label}
@@ -103,9 +116,9 @@ export function Nav() {
           {user ? (
             <div className="flex items-center gap-3 px-3 py-2">
               {avatarUrl ? (
-                <img src={avatarUrl} alt="" className="w-8 h-8 rounded-full ring-1 ring-border" />
+                <img src={avatarUrl} alt="" className="w-8 h-8 rounded-full ring-1 ring-gold/30" />
               ) : (
-                <div className="w-8 h-8 rounded-full bg-surface-lighter flex items-center justify-center text-xs text-muted">
+                <div className="w-8 h-8 rounded-full bg-surface-lighter flex items-center justify-center text-xs text-gold font-semibold">
                   {user.username[0].toUpperCase()}
                 </div>
               )}
