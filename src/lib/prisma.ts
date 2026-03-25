@@ -1,11 +1,9 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
-// Prisma 7 dynamic import to get PrismaClient
-let _prisma: any;
+const globalForPrisma = globalThis as unknown as { _prisma: any };
 
 function createPrismaClient() {
-  // Prisma 7 generates client at node_modules/.prisma/client
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { PrismaClient } = require("@prisma/client");
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -13,6 +11,12 @@ function createPrismaClient() {
   return new PrismaClient({ adapter });
 }
 
-const globalForPrisma = globalThis as unknown as { prisma: any };
-export const prisma = globalForPrisma.prisma || createPrismaClient();
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+// Lazy proxy - only creates the client when first accessed
+export const prisma: any = new Proxy({} as any, {
+  get(_target, prop) {
+    if (!globalForPrisma._prisma) {
+      globalForPrisma._prisma = createPrismaClient();
+    }
+    return globalForPrisma._prisma[prop];
+  },
+});
