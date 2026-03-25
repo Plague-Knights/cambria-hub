@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String   @id @default(cuid())
+  discordId     String   @unique
+  username      String
+  avatar        String?
+  walletAddress String?
+  xp            Int      @default(0)
+  level         Int      @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  completions   MissionCompletion[]
+  sessions      Session[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Mission {
+  id          String        @id @default(cuid())
+  title       String
+  description String
+  type        MissionType   @default(CORE)
+  category    String        @default("general")
+  xpReward    Int           @default(100)
+  icon        String?
+
+  // Requirements
+  requirement     Json?     // { type: "silver_earned", amount: 1000 } etc
+  prerequisiteId  String?
+  prerequisite    Mission?  @relation("MissionPrereq", fields: [prerequisiteId], references: [id])
+  unlockedBy      Mission[] @relation("MissionPrereq")
+
+  // Scheduling
+  seasonId    String?
+  season      Season?   @relation(fields: [seasonId], references: [id])
+  startsAt    DateTime?
+  endsAt      DateTime?
+  isActive    Boolean   @default(true)
+  sortOrder   Int       @default(0)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  completions MissionCompletion[]
+}
+
+enum MissionType {
+  CORE      // permanent onboarding missions
+  DAILY
+  WEEKLY
+  SEASONAL
+  SPECIAL   // one-off events
+}
+
+model MissionCompletion {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  missionId   String
+  mission     Mission  @relation(fields: [missionId], references: [id])
+  completedAt DateTime @default(now())
+  proof       Json?    // tx hash, screenshot url, etc
+
+  @@unique([userId, missionId])
+}
+
+model Season {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  startsAt    DateTime
+  endsAt      DateTime
+  isActive    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  missions    Mission[]
+}
+
+model Guide {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   // markdown
+  category    String   @default("getting-started")
+  sortOrder   Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
