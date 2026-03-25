@@ -19,15 +19,13 @@ interface Mission {
   _count: { completions: number };
 }
 
-const TABS = ["All", "CORE", "DAILY", "WEEKLY", "SEASONAL", "SPECIAL"] as const;
+const TABS = ["All", "Beginner", "Medium", "Hard"] as const;
 
-function typeColor(type: string) {
-  switch (type) {
-    case "CORE": return "bg-gold/15 text-gold border-gold/20";
-    case "DAILY": return "bg-gold/10 text-gold-light border-gold/15";
-    case "WEEKLY": return "bg-gold/15 text-gold border-gold/20";
-    case "SEASONAL": return "bg-gold/20 text-gold border-gold/25";
-    case "SPECIAL": return "bg-gold/25 text-gold border-gold/30";
+function typeColor(category: string) {
+  switch (category.toLowerCase()) {
+    case "beginner": return "bg-emerald-500/15 text-emerald-400 border-emerald-500/20";
+    case "medium": return "bg-gold/15 text-gold border-gold/20";
+    case "hard": return "bg-red-500/15 text-red-400 border-red-500/20";
     default: return "bg-surface-lighter text-muted border-border";
   }
 }
@@ -59,7 +57,7 @@ export default function MissionsPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  const filtered = activeTab === "All" ? missions : missions.filter((m) => m.type === activeTab);
+  const filtered = activeTab === "All" ? missions : missions.filter((m) => m.category.toLowerCase() === activeTab.toLowerCase());
 
   return (
     <div className="min-h-screen p-4 sm:p-6 lg:p-8 pt-16 md:pt-8">
@@ -87,7 +85,7 @@ export default function MissionsPage() {
                     : "bg-surface text-muted border-border hover:text-foreground hover:border-gold/15"
                 }`}
             >
-              {tab === "All" ? "All" : tab.charAt(0) + tab.slice(1).toLowerCase()}
+              {tab}
             </button>
           ))}
         </div>
@@ -141,8 +139,8 @@ export default function MissionsPage() {
 
                   {/* Type & Category */}
                   <div className="flex items-center gap-2 mb-3 flex-wrap">
-                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider border ${typeColor(mission.type)}`}>
-                      {mission.type}
+                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider border ${typeColor(mission.category)}`}>
+                      {mission.category}
                     </span>
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-surface-lighter text-muted border border-border">
                       {categoryLabel(mission.category)}
