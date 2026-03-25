@@ -19,16 +19,29 @@ interface Mission {
   _count: { completions: number };
 }
 
-const TABS = ["All", "Beginner", "Medium", "Hard"] as const;
+const TABS = ["All", "First Landing", "S3 Missions", "Duel Arena", "S4 Missions"] as const;
+const TAB_TO_CATEGORY: Record<string, string> = {
+  "First Landing": "first-landing",
+  "S3 Missions": "s3",
+  "Duel Arena": "duel-arena",
+  "S4 Missions": "s4",
+};
 
 function typeColor(category: string) {
-  switch (category.toLowerCase()) {
-    case "beginner": return "bg-emerald-500/15 text-emerald-400 border-emerald-500/20";
-    case "medium": return "bg-gold/15 text-gold border-gold/20";
-    case "hard": return "bg-red-500/15 text-red-400 border-red-500/20";
+  switch (category) {
+    case "first-landing": return "bg-emerald-500/15 text-emerald-400 border-emerald-500/20";
+    case "s3": return "bg-gold/15 text-gold border-gold/20";
+    case "s4": return "bg-blue-500/15 text-blue-400 border-blue-500/20";
+    case "duel-arena": return "bg-red-500/15 text-red-400 border-red-500/20";
     default: return "bg-surface-lighter text-muted border-border";
   }
 }
+const categoryLabels: Record<string, string> = {
+  "first-landing": "First Landing",
+  "s3": "Season 3",
+  "s4": "Season 4",
+  "duel-arena": "Duel Arena",
+};
 
 function categoryLabel(cat: string) {
   return cat.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
@@ -57,7 +70,7 @@ export default function MissionsPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  const filtered = activeTab === "All" ? missions : missions.filter((m) => m.category.toLowerCase() === activeTab.toLowerCase());
+  const filtered = activeTab === "All" ? missions : missions.filter((m) => m.category === TAB_TO_CATEGORY[activeTab]);
 
   return (
     <div className="min-h-screen p-4 sm:p-6 lg:p-8 pt-16 md:pt-8">
@@ -140,7 +153,7 @@ export default function MissionsPage() {
                   {/* Type & Category */}
                   <div className="flex items-center gap-2 mb-3 flex-wrap">
                     <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider border ${typeColor(mission.category)}`}>
-                      {mission.category}
+                      {categoryLabels[mission.category] || mission.category}
                     </span>
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-surface-lighter text-muted border border-border">
                       {categoryLabel(mission.category)}
