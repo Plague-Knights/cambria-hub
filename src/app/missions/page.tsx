@@ -153,7 +153,6 @@ export default function MissionsPage() {
                   <h3 className={`font-[family-name:var(--font-cinzel)] font-semibold text-sm mb-1.5 transition-colors
                     ${isCompleted ? "text-gold" : isLocked ? "text-muted" : "text-foreground group-hover:text-gold"}`}
                   >
-                    {mission.icon && <span className="mr-1.5">{mission.icon}</span>}
                     {mission.title}
                   </h3>
 

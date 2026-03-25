@@ -40,13 +40,17 @@ export function Nav() {
     <>
       {/* Mobile top bar */}
       <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-surface/95 backdrop-blur border-b border-border px-4 h-14 md:hidden">
-        <div className="flex items-center gap-2">
-          <svg className="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+        <div className="flex items-center gap-2.5">
+          <svg className="w-6 h-6 text-gold drop-shadow-[0_0_6px_rgba(240,160,32,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
             <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
+            <path d="M9 12l2 2 4-4" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span className="font-[family-name:var(--font-cinzel)] text-gold font-semibold text-sm tracking-wide">
-            CAMBRIA
-          </span>
+          <div>
+            <span className="font-[family-name:var(--font-cinzel)] text-gold font-bold text-base tracking-wider block leading-none">
+              CAMBRIA
+            </span>
+            <span className="text-muted text-[9px] tracking-[0.2em] uppercase">Mission Hub</span>
+          </div>
         </div>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
