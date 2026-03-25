@@ -80,7 +80,7 @@ export default function GuidesPage() {
         </div>
 
         {/* Category filter */}
-        <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+        <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none">
           {categories.map((cat) => {
             const meta = cat === "all" ? { label: "All" } : getCategoryMeta(cat);
             return (
@@ -108,7 +108,7 @@ export default function GuidesPage() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="glass-card rounded-xl p-12 text-center">
+          <div className="glass-card rounded-xl p-8 sm:p-12 text-center">
             <p className="text-muted">No guides available yet. Check back soon!</p>
           </div>
         ) : (

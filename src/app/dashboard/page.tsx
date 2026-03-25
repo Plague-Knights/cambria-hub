@@ -119,7 +119,7 @@ export default function DashboardPage() {
             </div>
           )}
           <div>
-            <h1 className="font-[family-name:var(--font-cinzel)] text-2xl font-bold text-foreground">
+            <h1 className="font-[family-name:var(--font-cinzel)] text-lg sm:text-2xl font-bold text-foreground">
               Welcome back, <span className="text-gold drop-shadow-[0_0_6px_rgba(0,255,102,0.3)]">{profile.username}</span>
             </h1>
             <p className="text-muted text-sm mt-0.5">
@@ -130,12 +130,12 @@ export default function DashboardPage() {
 
         {/* XP Bar */}
         <div className="glass-card rounded-xl p-5">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-muted">Level {profile.level}</span>
-            <span className="text-sm text-gold font-medium">
+          <div className="flex items-center justify-between mb-3 gap-2">
+            <span className="text-xs sm:text-sm text-muted shrink-0">Lv. {profile.level}</span>
+            <span className="text-xs sm:text-sm text-gold font-medium text-center">
               {xpProgress.current.toLocaleString()} / {xpProgress.needed.toLocaleString()} XP
             </span>
-            <span className="text-sm text-muted">Level {profile.level + 1}</span>
+            <span className="text-xs sm:text-sm text-muted shrink-0">Lv. {profile.level + 1}</span>
           </div>
           <div className="h-3 bg-surface-lighter rounded-full overflow-hidden">
             <div
@@ -155,7 +155,7 @@ export default function DashboardPage() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="glass-card rounded-xl p-5 transition-all duration-200"
+              className="glass-card rounded-xl p-3 sm:p-5 transition-all duration-200"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center">
@@ -165,7 +165,7 @@ export default function DashboardPage() {
                 </div>
                 <span className="text-xs text-muted uppercase tracking-wider">{stat.label}</span>
               </div>
-              <p className="font-[family-name:var(--font-cinzel)] text-2xl font-bold text-gold drop-shadow-[0_0_6px_rgba(0,255,102,0.2)]">
+              <p className="font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl font-bold text-gold drop-shadow-[0_0_6px_rgba(0,255,102,0.2)] break-all">
                 {stat.value}
               </p>
             </div>
@@ -205,7 +205,7 @@ export default function DashboardPage() {
               ))}
             </div>
           ) : (
-            <div className="glass-card rounded-xl p-8 text-center">
+            <div className="glass-card rounded-xl p-6 sm:p-8 text-center">
               <p className="text-muted text-sm">No active missions right now. Check back soon, Knight!</p>
             </div>
           )}
@@ -219,7 +219,7 @@ export default function DashboardPage() {
             </h2>
             <div className="glass-card rounded-xl divide-y divide-border">
               {profile.recentCompletions.map((comp) => (
-                <div key={comp.id} className="flex items-center justify-between px-5 py-3.5">
+                <div key={comp.id} className="flex items-center justify-between px-3 sm:px-5 py-3 sm:py-3.5">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center">
                       <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">

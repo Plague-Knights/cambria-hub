@@ -17,9 +17,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col pt-14 md:pt-0">
       {/* Hero */}
-      <section className="flex-1 flex flex-col items-center justify-center px-6 py-24 text-center relative overflow-hidden shield-pattern">
+      <section className="flex-1 flex flex-col items-center justify-center px-6 py-10 sm:py-24 text-center relative overflow-hidden shield-pattern">
         {/* Background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px]" />
@@ -55,7 +55,7 @@ export default function Home() {
           </p>
 
           {/* Stats row */}
-          <div className="flex items-center justify-center gap-6 sm:gap-10 mb-10">
+          <div className="flex items-center justify-center gap-5 sm:gap-10 mb-8 sm:mb-10">
             {[
               { value: "#1", label: "Guild" },
               { value: "Top 5", label: "Arena" },
@@ -105,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* Game Activities */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-14 sm:pb-24">
         <div className="max-w-4xl mx-auto">
           <h3 className="font-[family-name:var(--font-cinzel)] text-lg text-gold font-semibold text-center mb-8 tracking-wider uppercase">
             Dominate Every Arena

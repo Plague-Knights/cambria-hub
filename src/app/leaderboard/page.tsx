@@ -64,7 +64,7 @@ export default function LeaderboardPage() {
 
         {/* Top 3 podium */}
         {!loading && entries.length >= 3 && (
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-8">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-8">
             {[entries[1], entries[0], entries[2]].map((entry, i) => {
               const actualRank = [2, 1, 3][i];
               const isMe = me?.id === entry.id;
@@ -75,7 +75,7 @@ export default function LeaderboardPage() {
               return (
                 <div
                   key={entry.id}
-                  className={`flex flex-col items-center p-4 sm:p-6 rounded-xl border transition-all duration-300
+                  className={`flex flex-col items-center p-2 sm:p-4 lg:p-6 rounded-xl border transition-all duration-300
                     ${actualRank === 1 ? "glass-card border-gold/30 sm:-mt-4 shadow-[0_0_25px_rgba(0,255,102,0.1)]" : ""}
                     ${actualRank === 2 ? "glass-card border-gold/15" : ""}
                     ${actualRank === 3 ? "glass-card border-gold/10" : ""}
@@ -83,7 +83,7 @@ export default function LeaderboardPage() {
                   `}
                 >
                   {/* Rank number */}
-                  <span className={`font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold mb-3 ${RANK_STYLES[actualRank]} ${actualRank === 1 ? "drop-shadow-[0_0_10px_rgba(0,255,102,0.4)]" : ""}`}>
+                  <span className={`font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${RANK_STYLES[actualRank]} ${actualRank === 1 ? "drop-shadow-[0_0_10px_rgba(0,255,102,0.4)]" : ""}`}>
                     {actualRank}
                   </span>
 
@@ -92,21 +92,21 @@ export default function LeaderboardPage() {
                     <img
                       src={avatarUrl}
                       alt=""
-                      className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-3 ring-2 ${
+                      className={`w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full mb-2 sm:mb-3 ring-2 ${
                         actualRank === 1 ? "ring-gold/50 shadow-[0_0_15px_rgba(0,255,102,0.2)]" : actualRank === 2 ? "ring-gold-light/40" : "ring-gold-dark/40"
                       }`}
                     />
                   ) : (
-                    <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-3 bg-surface-lighter flex items-center justify-center text-lg font-semibold ${RANK_STYLES[actualRank]}`}>
+                    <div className={`w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full mb-2 sm:mb-3 bg-surface-lighter flex items-center justify-center text-base sm:text-lg font-semibold ${RANK_STYLES[actualRank]}`}>
                       {entry.username[0].toUpperCase()}
                     </div>
                   )}
 
-                  <p className={`text-sm font-semibold truncate max-w-full ${isMe ? "text-gold" : "text-foreground"}`}>
+                  <p className={`text-xs sm:text-sm font-semibold truncate max-w-full ${isMe ? "text-gold" : "text-foreground"}`}>
                     {entry.username}
                   </p>
-                  <p className="text-gold text-xs font-medium mt-1">
-                    {entry.xp.toLocaleString()} XP
+                  <p className="text-gold text-[10px] sm:text-xs font-medium mt-1">
+                    {entry.xp >= 1000 ? `${(entry.xp / 1000).toFixed(1)}k` : entry.xp} XP
                   </p>
                   <p className="text-muted text-[10px] mt-0.5">
                     Lv. {entry.level}
@@ -125,16 +125,17 @@ export default function LeaderboardPage() {
             ))}
           </div>
         ) : entries.length === 0 ? (
-          <div className="glass-card rounded-xl p-12 text-center">
+          <div className="glass-card rounded-xl p-8 sm:p-12 text-center">
             <p className="text-muted">No Knights on the leaderboard yet.</p>
           </div>
         ) : (
           <div className="glass-card rounded-xl overflow-hidden">
+            <div className="overflow-x-auto">
             {/* Table header */}
-            <div className="grid grid-cols-[3rem_1fr_5rem_5rem_5rem] sm:grid-cols-[4rem_1fr_6rem_6rem_7rem] gap-2 px-4 py-3 border-b border-border text-xs text-muted uppercase tracking-wider">
+            <div className="grid grid-cols-[2.5rem_1fr_4rem_4.5rem] sm:grid-cols-[4rem_1fr_6rem_6rem_7rem] gap-2 px-4 py-3 border-b border-border text-xs text-muted uppercase tracking-wider min-w-0">
               <span>Rank</span>
               <span>Knight</span>
-              <span className="text-right">Level</span>
+              <span className="text-right">Lvl</span>
               <span className="text-right">XP</span>
               <span className="text-right hidden sm:block">Missions</span>
             </div>
@@ -150,7 +151,7 @@ export default function LeaderboardPage() {
               return (
                 <div
                   key={entry.id}
-                  className={`grid grid-cols-[3rem_1fr_5rem_5rem_5rem] sm:grid-cols-[4rem_1fr_6rem_6rem_7rem] gap-2 px-4 py-3 items-center border-b border-border/50 last:border-0 transition-colors
+                  className={`grid grid-cols-[2.5rem_1fr_4rem_4.5rem] sm:grid-cols-[4rem_1fr_6rem_6rem_7rem] gap-2 px-4 py-3 items-center border-b border-border/50 last:border-0 transition-colors
                     ${isMe ? "bg-gold/5" : "hover:bg-surface-light/50"}
                     ${isTop3 ? RANK_BG[entry.rank] || "" : ""}
                   `}
@@ -158,7 +159,7 @@ export default function LeaderboardPage() {
                   <span className={`font-[family-name:var(--font-cinzel)] font-bold text-sm ${RANK_STYLES[entry.rank] || "text-muted"}`}>
                     {entry.rank}
                   </span>
-                  <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="flex items-center gap-2 min-w-0">
                     {avatarUrl ? (
                       <img src={avatarUrl} alt="" className="w-7 h-7 rounded-full shrink-0" />
                     ) : (
@@ -168,11 +169,11 @@ export default function LeaderboardPage() {
                     )}
                     <span className={`text-sm truncate ${isMe ? "text-gold font-semibold" : "text-foreground"}`}>
                       {entry.username}
-                      {isMe && <span className="text-gold/60 text-xs ml-1.5">(you)</span>}
+                      {isMe && <span className="text-gold/60 text-xs ml-1">(you)</span>}
                     </span>
                   </div>
-                  <span className="text-sm text-foreground text-right">{entry.level}</span>
-                  <span className="text-sm text-gold text-right font-medium">
+                  <span className="text-xs sm:text-sm text-foreground text-right">{entry.level}</span>
+                  <span className="text-xs sm:text-sm text-gold text-right font-medium">
                     {entry.xp >= 1000 ? `${(entry.xp / 1000).toFixed(1)}k` : entry.xp}
                   </span>
                   <span className="text-sm text-muted text-right hidden sm:block">
@@ -181,6 +182,7 @@ export default function LeaderboardPage() {
                 </div>
               );
             })}
+            </div>
           </div>
         )}
       </div>

@@ -120,7 +120,7 @@ export default function ProfilePage() {
     <div className="min-h-screen p-4 sm:p-6 lg:p-8 pt-16 md:pt-8">
       <div className="max-w-3xl mx-auto animate-fade-in space-y-8">
         {/* Profile Header */}
-        <div className="glass-card rounded-xl p-6 sm:p-8 relative overflow-hidden">
+        <div className="glass-card rounded-xl p-4 sm:p-6 lg:p-8 relative overflow-hidden">
           {/* Background glow */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-[80px] pointer-events-none" />
 
@@ -184,7 +184,7 @@ export default function ProfilePage() {
               key={stat.label}
               className="glass-card rounded-xl p-4 sm:p-5 text-center transition-all duration-200"
             >
-              <p className={`font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold ${stat.accent} drop-shadow-[0_0_6px_rgba(0,255,102,0.2)]`}>
+              <p className={`font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl lg:text-3xl font-bold ${stat.accent} drop-shadow-[0_0_6px_rgba(0,255,102,0.2)] break-all`}>
                 {stat.value}
               </p>
               <p className="text-muted text-xs mt-1 uppercase tracking-wider">{stat.label}</p>
@@ -198,13 +198,13 @@ export default function ProfilePage() {
             Mission History
           </h2>
           {profile.recentCompletions.length === 0 ? (
-            <div className="glass-card rounded-xl p-8 text-center">
+            <div className="glass-card rounded-xl p-6 sm:p-8 text-center">
               <p className="text-muted text-sm">No missions completed yet. Begin your conquest, Knight!</p>
             </div>
           ) : (
             <div className="glass-card rounded-xl divide-y divide-border">
               {profile.recentCompletions.map((comp) => (
-                <div key={comp.id} className="flex items-center justify-between px-5 py-4 hover:bg-surface-light/30 transition-colors">
+                <div key={comp.id} className="flex items-center justify-between px-3 sm:px-5 py-3 sm:py-4 hover:bg-surface-light/30 transition-colors">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
                       <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">

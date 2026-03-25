@@ -100,7 +100,7 @@ export default function MissionsPage() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="glass-card rounded-xl p-12 text-center">
+          <div className="glass-card rounded-xl p-8 sm:p-12 text-center">
             <p className="text-muted">No missions found for this category.</p>
           </div>
         ) : (
