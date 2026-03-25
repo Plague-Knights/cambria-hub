@@ -11,9 +11,9 @@ export async function GET(request: NextRequest) {
 
   try {
     await handleOAuthCallback(code);
-  } catch (error) {
-    console.error("OAuth callback error:", error);
-    return Response.json({ error: "Authentication failed" }, { status: 500 });
+  } catch (error: any) {
+    console.error("OAuth callback error:", error?.message || error);
+    return Response.json({ error: "Authentication failed", detail: error?.message?.slice(0, 200) }, { status: 500 });
   }
 
   redirect("/dashboard");
