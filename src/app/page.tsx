@@ -30,7 +30,7 @@ export default function Home() {
           {/* Shield emblem */}
           <div className="mb-6 flex justify-center">
             <div className="relative">
-              <svg className="w-16 h-16 text-gold drop-shadow-[0_0_12px_rgba(0,255,102,0.4)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.2}>
+              <svg className="w-16 h-16 text-gold drop-shadow-[0_0_12px_rgba(240,160,32,0.4)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.2}>
                 <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
                 <path d="M9 12l2 2 4-4" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -40,14 +40,14 @@ export default function Home() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border-gold bg-gold/5 text-gold text-xs font-medium tracking-wider uppercase mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-            Now Recruiting
+            Season 2 Live
           </div>
 
           <h1 className="font-[family-name:var(--font-cinzel)] text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-2">
-            <span className="animate-shimmer">Plague Knights</span>
+            <span className="animate-shimmer">CAMBRIA</span>
           </h1>
           <h2 className="font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl md:text-3xl font-semibold text-foreground/80 mb-6">
-            Cambria Mission Hub
+            Mission Hub
           </h2>
 
           <p className="text-muted text-lg sm:text-xl leading-relaxed max-w-lg mx-auto mb-6">
@@ -62,7 +62,7 @@ export default function Home() {
               { value: "50+", label: "Knights" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold text-gold drop-shadow-[0_0_8px_rgba(0,255,102,0.3)]">
+                <p className="font-[family-name:var(--font-cinzel)] text-2xl sm:text-3xl font-bold text-gold drop-shadow-[0_0_8px_rgba(240,160,32,0.3)]">
                   {stat.value}
                 </p>
                 <p className="text-muted text-xs uppercase tracking-wider mt-1">{stat.label}</p>
@@ -75,7 +75,7 @@ export default function Home() {
               {loggedIn ? (
                 <Link
                   href="/dashboard"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-gold hover:bg-gold-light text-background font-semibold text-sm tracking-wide transition-all duration-200 hover:shadow-[0_0_30px_rgba(0,255,102,0.3)]"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-gold hover:bg-gold-light text-background font-semibold text-sm tracking-wide transition-all duration-200 hover:shadow-[0_0_30px_rgba(240,160,32,0.3)]"
                 >
                   Enter Dashboard
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,12 +95,27 @@ export default function Home() {
               )}
               <Link
                 href="/missions"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border border-border hover:border-gold/40 text-foreground text-sm font-medium transition-all duration-200 hover:shadow-[0_0_15px_rgba(0,255,102,0.1)]"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border border-border hover:border-gold/40 text-foreground text-sm font-medium transition-all duration-200 hover:shadow-[0_0_15px_rgba(240,160,32,0.1)]"
               >
                 Browse Missions
               </Link>
             </div>
           )}
+
+          {/* Play Cambria link */}
+          <div className="mt-6">
+            <a
+              href="https://lobby.cambria.gg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gold/70 hover:text-gold text-sm font-medium transition-colors"
+            >
+              Play Cambria
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -132,7 +147,7 @@ export default function Home() {
                 key={feat.title}
                 className="glass-card group p-6 rounded-xl transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors group-hover:shadow-[0_0_12px_rgba(0,255,102,0.15)]">
+                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors group-hover:shadow-[0_0_12px_rgba(240,160,32,0.15)]">
                   <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={feat.icon} />
                   </svg>

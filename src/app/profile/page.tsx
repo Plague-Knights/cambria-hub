@@ -130,10 +130,10 @@ export default function ProfilePage() {
               <img
                 src={avatarUrl}
                 alt=""
-                className="w-24 h-24 rounded-full ring-2 ring-gold/30 shadow-[0_0_30px_rgba(0,255,102,0.15)]"
+                className="w-24 h-24 rounded-full ring-2 ring-gold/30 shadow-[0_0_30px_rgba(240,160,32,0.15)]"
               />
             ) : (
-              <div className="w-24 h-24 rounded-full bg-surface-lighter flex items-center justify-center text-3xl font-bold text-gold ring-2 ring-gold/30 shadow-[0_0_30px_rgba(0,255,102,0.15)]">
+              <div className="w-24 h-24 rounded-full bg-surface-lighter flex items-center justify-center text-3xl font-bold text-gold ring-2 ring-gold/30 shadow-[0_0_30px_rgba(240,160,32,0.15)]">
                 {profile.username[0].toUpperCase()}
               </div>
             )}
@@ -154,7 +154,7 @@ export default function ProfilePage() {
                 </div>
                 <div className="h-2.5 bg-surface-lighter rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full transition-all duration-700 shadow-[0_0_10px_rgba(0,255,102,0.4)]"
+                    className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full transition-all duration-700 shadow-[0_0_10px_rgba(240,160,32,0.4)]"
                     style={{ width: `${xpProgress.percent}%` }}
                   />
                 </div>
@@ -184,7 +184,7 @@ export default function ProfilePage() {
               key={stat.label}
               className="glass-card rounded-xl p-4 sm:p-5 text-center transition-all duration-200"
             >
-              <p className={`font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl lg:text-3xl font-bold ${stat.accent} drop-shadow-[0_0_6px_rgba(0,255,102,0.2)] break-all`}>
+              <p className={`font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl lg:text-3xl font-bold ${stat.accent} drop-shadow-[0_0_6px_rgba(240,160,32,0.2)] break-all`}>
                 {stat.value}
               </p>
               <p className="text-muted text-xs mt-1 uppercase tracking-wider">{stat.label}</p>

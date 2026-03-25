@@ -90,7 +90,7 @@ export default function GuidesPage() {
                 className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-150 border
                   ${
                     activeCategory === cat
-                      ? "bg-gold/10 text-gold border-gold/30 shadow-[0_0_10px_rgba(0,255,102,0.1)]"
+                      ? "bg-gold/10 text-gold border-gold/30 shadow-[0_0_10px_rgba(240,160,32,0.1)]"
                       : "bg-surface text-muted border-border hover:text-foreground hover:border-gold/15"
                   }`}
               >

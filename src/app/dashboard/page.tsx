@@ -112,15 +112,15 @@ export default function DashboardPage() {
         {/* Welcome */}
         <div className="flex items-center gap-4">
           {avatarUrl ? (
-            <img src={avatarUrl} alt="" className="w-14 h-14 rounded-full ring-2 ring-gold/30 shadow-[0_0_15px_rgba(0,255,102,0.15)]" />
+            <img src={avatarUrl} alt="" className="w-14 h-14 rounded-full ring-2 ring-gold/30 shadow-[0_0_15px_rgba(240,160,32,0.15)]" />
           ) : (
-            <div className="w-14 h-14 rounded-full bg-surface-lighter flex items-center justify-center text-xl text-gold font-semibold shadow-[0_0_15px_rgba(0,255,102,0.1)]">
+            <div className="w-14 h-14 rounded-full bg-surface-lighter flex items-center justify-center text-xl text-gold font-semibold shadow-[0_0_15px_rgba(240,160,32,0.1)]">
               {profile.username[0].toUpperCase()}
             </div>
           )}
           <div>
             <h1 className="font-[family-name:var(--font-cinzel)] text-lg sm:text-2xl font-bold text-foreground">
-              Welcome back, <span className="text-gold drop-shadow-[0_0_6px_rgba(0,255,102,0.3)]">{profile.username}</span>
+              Welcome back, <span className="text-gold drop-shadow-[0_0_6px_rgba(240,160,32,0.3)]">{profile.username}</span>
             </h1>
             <p className="text-muted text-sm mt-0.5">
               Level {profile.level} Knight
@@ -139,7 +139,7 @@ export default function DashboardPage() {
           </div>
           <div className="h-3 bg-surface-lighter rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full transition-all duration-700 ease-out shadow-[0_0_10px_rgba(0,255,102,0.4)]"
+              className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full transition-all duration-700 ease-out shadow-[0_0_10px_rgba(240,160,32,0.4)]"
               style={{ width: `${xpProgress.percent}%` }}
             />
           </div>
@@ -165,7 +165,7 @@ export default function DashboardPage() {
                 </div>
                 <span className="text-xs text-muted uppercase tracking-wider">{stat.label}</span>
               </div>
-              <p className="font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl font-bold text-gold drop-shadow-[0_0_6px_rgba(0,255,102,0.2)] break-all">
+              <p className="font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl font-bold text-gold drop-shadow-[0_0_6px_rgba(240,160,32,0.2)] break-all">
                 {stat.value}
               </p>
             </div>

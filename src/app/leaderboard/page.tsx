@@ -76,14 +76,14 @@ export default function LeaderboardPage() {
                 <div
                   key={entry.id}
                   className={`flex flex-col items-center p-2 sm:p-4 lg:p-6 rounded-xl border transition-all duration-300
-                    ${actualRank === 1 ? "glass-card border-gold/30 sm:-mt-4 shadow-[0_0_25px_rgba(0,255,102,0.1)]" : ""}
+                    ${actualRank === 1 ? "glass-card border-gold/30 sm:-mt-4 shadow-[0_0_25px_rgba(240,160,32,0.1)]" : ""}
                     ${actualRank === 2 ? "glass-card border-gold/15" : ""}
                     ${actualRank === 3 ? "glass-card border-gold/10" : ""}
                     ${isMe ? "ring-1 ring-gold/40" : ""}
                   `}
                 >
                   {/* Rank number */}
-                  <span className={`font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${RANK_STYLES[actualRank]} ${actualRank === 1 ? "drop-shadow-[0_0_10px_rgba(0,255,102,0.4)]" : ""}`}>
+                  <span className={`font-[family-name:var(--font-cinzel)] text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${RANK_STYLES[actualRank]} ${actualRank === 1 ? "drop-shadow-[0_0_10px_rgba(240,160,32,0.4)]" : ""}`}>
                     {actualRank}
                   </span>
 
@@ -93,7 +93,7 @@ export default function LeaderboardPage() {
                       src={avatarUrl}
                       alt=""
                       className={`w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full mb-2 sm:mb-3 ring-2 ${
-                        actualRank === 1 ? "ring-gold/50 shadow-[0_0_15px_rgba(0,255,102,0.2)]" : actualRank === 2 ? "ring-gold-light/40" : "ring-gold-dark/40"
+                        actualRank === 1 ? "ring-gold/50 shadow-[0_0_15px_rgba(240,160,32,0.2)]" : actualRank === 2 ? "ring-gold-light/40" : "ring-gold-dark/40"
                       }`}
                     />
                   ) : (
