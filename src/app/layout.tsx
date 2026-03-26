@@ -16,9 +16,9 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "Plague Knights | Cambria Mission Hub",
+  title: "Cambria Mission Hub",
   description:
-    "Conquer the devastated lands. Complete missions. Earn your place among the Plague Knights.",
+    "Conquer the devastated lands. Complete missions. Earn your place.",
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cinzel.variable} ${rajdhani.variable}`}>
-      <body className="min-h-screen flex">
+      <body className="min-h-screen flex overflow-x-hidden">
         <Nav />
         <main className="flex-1 md:ml-60">{children}</main>
       </body>

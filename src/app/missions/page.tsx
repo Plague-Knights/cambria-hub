@@ -73,7 +73,7 @@ export default function MissionsPage() {
   const filtered = activeTab === "All" ? missions : missions.filter((m) => m.category === TAB_TO_CATEGORY[activeTab]);
 
   return (
-    <div className="min-h-screen p-4 sm:p-6 lg:p-8 pt-16 md:pt-8">
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8 pt-16 md:pt-8 overflow-x-hidden">
       <div className="max-w-5xl mx-auto animate-fade-in">
         {/* Header */}
         <div className="mb-8">
@@ -150,13 +150,10 @@ export default function MissionsPage() {
                     </div>
                   )}
 
-                  {/* Type & Category */}
+                  {/* Category Badge */}
                   <div className="flex items-center gap-2 mb-3 flex-wrap">
                     <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider border ${typeColor(mission.category)}`}>
                       {categoryLabels[mission.category] || mission.category}
-                    </span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-surface-lighter text-muted border border-border">
-                      {categoryLabel(mission.category)}
                     </span>
                   </div>
 
